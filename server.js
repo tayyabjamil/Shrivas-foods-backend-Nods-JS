@@ -2,9 +2,9 @@ const mongoose = require('mongoose')
 const Grid = require('gridfs-stream');
 const app = require('./app')
 
-const port = process.env.port || 8080;
-app.listen(port , ()=>{
-    console.log('listening at port '+port)
+
+app.listen(process.env.port ,'0.0.0.0' , ()=>{
+    console.log('listening at port '+process.env.port)
 })
 // const dbpath = 'mongodb://localhost:27017/Nodejs'
 // mongoose.connect('mongodb+srv://tayyab:tayyab@123@cluster0.wzfwv.mongodb.net/shirivasFoods', 
