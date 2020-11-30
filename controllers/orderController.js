@@ -3,6 +3,7 @@ const { Query } = require('mongoose')
 const User = require("../models/user")
 const mongoose = require("mongoose");
 const Product = require('../models/product');
+const sendEmailCustomer = require('../email')
 const ObjectId = mongoose.Types.ObjectId;
 exports.getAllOrders = async(req,res)=>{
     try {
@@ -108,7 +109,7 @@ exports.createOrder = async(req,res)=>{
     }
     exports.shippingPhase = async(req,res)=>{
         try {
-          
+         const message ="Your order is progressed to shippiping phase"
            Order.findByIdAndUpdate({_id:req.body.orderId},{phase:"shipping phase"}, function(err, result) {
             if (err) {
                console.log(err)
@@ -122,6 +123,11 @@ exports.createOrder = async(req,res)=>{
         }
         
         })
+        sendEmailCustomer(
+
+            req.body.ownerEmail,
+            message
+          );
          
         // const product = Product.find({_id:req.body})
         } catch (error) {

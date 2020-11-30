@@ -18,7 +18,10 @@ const crypto = require("crypto")
         required:[true,'must add user Password']
      },
      
-    
+     contact:{
+      type: String,
+      required:[true,'must add contact']
+   },
 
 role:{
     type:String,
@@ -27,8 +30,10 @@ role:{
 },
 refrenceId:String,
 accountBonus:Number,
+verifyAccountToken:String,
 passwordResetToken:String,
-passwordResetExpires:Date
+passwordResetExpires:Date,
+verification:String
 })
 function makeid(length) {
     var result           = '';
@@ -52,7 +57,8 @@ userSchema.pre('save',async function(next){
        this.refrenceId = makeid(6)
        console.log(this.refrenceId)
     }
-   
+    
+     
     
 });
 userSchema.methods.createPaswordRestToken = function(){

@@ -13,22 +13,26 @@ router.route('/')
 
 
 router.route('/login')
-
 .post(userController.login)
 
-// .delete(userController.patchApiUsers)
-// .patch(userController.deleteApiUsers)
 
 router.route('/forgetPassword')
 .post(authController.forgetPassword)
 
-// router.route('/activate/:token')
-// .post(userController.verifyAndAccount)
+router.route('/accountVerify/')
+.post(userController.verifyAndAccount)
 
-// router.route('/update/:id')
-// .post(userController.updatePassword)
+router.route('/editInfo')
+.post(userController.updateInfo)
+
+
+router.route('/editPassword')
+.post(userController.updatePassword)
 
 router.route('/resetPassword')
 .post(authController.resetPassword)
+
+router.route('/referFriend')
+.post(authController.referFriend)
 
 module.exports = router

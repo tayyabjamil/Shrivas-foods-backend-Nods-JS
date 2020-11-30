@@ -1,5 +1,5 @@
 const User = require('../models/user')
-const sendEmail = require('../email')
+const sendRefrenceEmail = require('../email')
 const jwt = require('jsonwebtoken')
 const bcrypt = require("bcrypt")
 const mailgun = require("mailgun-js");
@@ -87,3 +87,33 @@ if(!user){
   }
 }
 }
+exports.referFriend = async(req,res)=>{
+    try {
+
+        const user = await User.findOne(    
+            {
+                _id:req.body.userId,
+                refrenceId : req.body.refrenceCode,
+
+            })
+            if(user){
+                username = user.username
+       
+        sendRefrenceEmail(
+
+            req.body.friendEmail,
+            req.body.refrenceCode,
+            username
+          );
+          return res.status(200).json({
+            message:"code sent"
+        })   
+    }else{
+        return res.status(400).json({
+            message:"Your Refrence Id is incorrect"
+        })
+    }
+} catch (error) {
+        
+    }   
+   }
