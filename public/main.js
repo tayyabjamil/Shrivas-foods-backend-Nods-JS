@@ -1247,7 +1247,7 @@ class AccountService {
         };
     }
     createuserAccount(newUser) {
-        return this.http.post('http://localhost:8000/api/users/', {
+        return this.http.post('/api/users/', {
             firstName: newUser.firstName,
             lastName: newUser.lastName,
             email: newUser.email,
@@ -1258,7 +1258,7 @@ class AccountService {
         }, this.httpHeaders);
     }
     signIn(newUser) {
-        return this.http.post('http://localhost:8000/api/users/signIn', {
+        return this.http.post('/api/users/signIn', {
             username: newUser.username,
             email: newUser.email,
             password: newUser.password,
@@ -1269,7 +1269,7 @@ class AccountService {
         }, this.httpHeaders);
     }
     login(user) {
-        return this.http.post('http://localhost:8000/api/users/login', {
+        return this.http.post('/api/users/login', {
             email: user.email,
             password: user.password,
             idToken: user.idToken,
@@ -1278,25 +1278,25 @@ class AccountService {
     }
     forgetPassword(data) {
         // const email = this.myauthService.getemail()
-        return this.http.post('http://localhost:8000/api/users/forgetPassword/', {
+        return this.http.post('/api/users/forgetPassword/', {
             email: data.email
         }, this.httpHeaders);
     }
     resetPassword(newPass) {
-        return this.http.post('http://localhost:8000/api/users/resetPassword/', {
+        return this.http.post('/api/users/resetPassword/', {
             confirmPassword: newPass.confirmPassword,
             password: newPass.newPassword,
             resetToken: newPass.resetToken
         }, this.httpHeaders);
     }
     accountVerify(data) {
-        return this.http.post('http://localhost:8000/api/users/accountVerify/', {
+        return this.http.post('/api/users/accountVerify/', {
             token: data.accountToken,
             isVerify: data.isVerify,
         }, this.httpHeaders);
     }
     editInfo(data) {
-        return this.http.post('http://localhost:8000/api/users/editInfo/', {
+        return this.http.post('/api/users/editInfo/', {
             userId: this.myauthService.getID(),
             username: data.username,
             email: data.email,
@@ -1304,7 +1304,7 @@ class AccountService {
         }, this.httpHeaders);
     }
     editPassword(data) {
-        return this.http.post('http://localhost:8000/api/users/editPassword/', {
+        return this.http.post('/api/users/editPassword/', {
             userId: this.myauthService.getID(),
             oldPassword: data.oldPassword,
             newPassword: data.newPassword,
@@ -1387,7 +1387,7 @@ class CartService {
     order(orderData) {
         const username = this.myauthService.getusername();
         const user = this.myauthService.getID();
-        return this.http.post('http://localhost:8000/api/orders/', {
+        return this.http.post('/api/orders/', {
             cartData: orderData.cartItems,
             total: orderData.total,
             user: user,
@@ -1854,22 +1854,22 @@ class ProductService {
         };
     }
     getProducts() {
-        return this.http.get('http://localhost:8000/api/products', this.httpHeaders);
+        return this.http.get('/api/products', this.httpHeaders);
     }
     getOrders() {
-        return this.http.get('http://localhost:8000/api/orders/' + this.myauthService.getID(), this.httpHeaders);
+        return this.http.get('/api/orders/' + this.myauthService.getID(), this.httpHeaders);
     }
     featuredProducts() {
-        return this.http.get('http://localhost:8000/api/products/featuredProducts', this.httpHeaders);
+        return this.http.get('/api/products/featuredProducts', this.httpHeaders);
     }
     getCatagoryProducts(catagory) {
-        return this.http.get('http://localhost:8000/api/products/catagory/' + catagory, this.httpHeaders);
+        return this.http.get('/api/products/catagory/' + catagory, this.httpHeaders);
     }
     productImageUrl(name) {
-        return 'http://localhost:8000/api/products/image/' + name;
+        return '/api/products/image/' + name;
     }
     referFriend(data) {
-        return this.http.post('http://localhost:8000/api/users/referFriend', {
+        return this.http.post('/api/users/referFriend', {
             userId: this.myauthService.getID(),
             refrenceCode: data.refrenceCode,
             friendEmail: data.friendEmail
@@ -6318,7 +6318,7 @@ class LoginComponent {
     }
 }
 LoginComponent.ɵfac = function LoginComponent_Factory(t) { return new (t || LoginComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_flex_layout__WEBPACK_IMPORTED_MODULE_3__["MediaObserver"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormBuilder"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_account_service__WEBPACK_IMPORTED_MODULE_5__["AccountService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](angularx_social_login__WEBPACK_IMPORTED_MODULE_2__["SocialAuthService"])); };
-LoginComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: LoginComponent, selectors: [["app-login"]], decls: 53, vars: 5, consts: [[2, "background-color", "#f7f7f7"], [1, "row", 2, "display", "flex", "flex", "1", "flex-direction", "row", "justify-content", "center", "text-align", "center", "padding-top", "5%", "padding-bottom", "5%", "padding-left", "10vw", "padding-right", "10vw"], [1, "cardLeft", 2, "float", "left", "width", "60%", "text-align", "left"], [2, "font-size", "x-large", "padding-top", "15%", "font-weight", "500"], [2, "padding-bottom", "5%", "padding-top", "5%"], [2, "font-weight", "bold"], ["name", "email", "rformControlName", "email", 1, "textfieldBorderColor", "font13", 3, "rformgroup"], [1, "input-group", 2, "display", "flex", "flex-direction", "row"], [2, "width", "90%"], ["name", "password", "rformControlName", "password", 1, "textfieldBorderColor", "font13", 3, "type", "rformgroup"], [2, "width", "10%"], ["type", "submit", 1, "btn", "btn-default", 2, "height", "35px", 3, "click"], [1, "glyphicon", "glyphicon-eye-open"], [2, "text-align", "right"], [1, "text", "text-primary", 3, "click"], ["style", "text-align: center;", 4, "ngIf"], ["style", "text-align: center", 4, "ngIf"], [1, "cardRight", 2, "float", "right", "width", "30%"], [2, "text-align", "center", "width", "100%"], ["type", "button", 1, "btn", "btn-primary", 3, "click"], [2, "background-color", "rgb(189, 187, 187)"], [2, "padding-left", "5%", "padding-right", "5%", "padding-top", "3%", "padding-bottom", "3%"], [1, "row"], [1, "col-lg-6"], [2, "width", "40vw"], [1, "hr", 2, "background-color", "black"], [2, "padding", "5%", 3, "click"], [1, "btn", 2, "padding-left", "2.5%", "padding-right", "2.5%", "background-color", "rgb(63, 61, 61)", "color", "whitesmoke"], [2, "font-weight", "bold", "font-size", "small"], [2, "text-align", "center"], ["type", "button", 1, "btn", "btn-primary", 2, "width", "100%", 3, "click"], [2, "margin-top", "3%", "display", "flex", "flex-direction", "row", "justify-content", "space-evenly"], [1, "btn", "btn-danger", 3, "click"], [1, "btn", "btn-primary", 2, "margin-left", "4%", 3, "click"], [2, "margin-top", "3%", "display", "flex", "flex-direction", "column", "justify-content", "center"], [1, "btn", "btn-primary", 2, "margin-top", "4%", 3, "click"]], template: function LoginComponent_Template(rf, ctx) { if (rf & 1) {
+LoginComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: LoginComponent, selectors: [["app-login"]], decls: 53, vars: 5, consts: [[2, "background-color", "#f7f7f7"], [1, "row", 2, "display", "flex", "flex", "1", "flex-direction", "row", "justify-content", "center", "text-align", "center", "padding-top", "5%", "padding-bottom", "5%", "padding-left", "10vw", "padding-right", "10vw"], [1, "cardLeft", 2, "float", "left", "width", "60%", "text-align", "left"], [2, "font-size", "x-large", "padding-top", "15%", "font-weight", "500"], [2, "padding-bottom", "5%", "padding-top", "5%"], [2, "font-weight", "bold"], ["name", "email", "placeholder", "Describe yourself here...", "rformControlName", "email", 1, "textfieldBorderColor", "font13", 3, "rformgroup"], [1, "input-group", 2, "display", "flex", "flex-direction", "row"], [2, "width", "90%"], ["name", "password", "rformControlName", "password", 1, "textfieldBorderColor", "font13", 3, "type", "rformgroup"], [2, "width", "10%"], ["type", "submit", 1, "btn", "btn-default", 2, "height", "35px", 3, "click"], [1, "glyphicon", "glyphicon-eye-open"], [2, "text-align", "right"], [1, "text", "text-primary", 3, "click"], ["style", "text-align: center;", 4, "ngIf"], ["style", "text-align: center", 4, "ngIf"], [1, "cardRight", 2, "float", "right", "width", "30%"], [2, "text-align", "center", "width", "100%"], ["type", "button", 1, "btn", "btn-primary", 3, "click"], [2, "background-color", "rgb(189, 187, 187)"], [2, "padding-left", "5%", "padding-right", "5%", "padding-top", "3%", "padding-bottom", "3%"], [1, "row"], [1, "col-lg-6"], [2, "width", "40vw"], [1, "hr", 2, "background-color", "black"], [2, "padding", "5%", 3, "click"], [1, "btn", 2, "padding-left", "2.5%", "padding-right", "2.5%", "background-color", "rgb(63, 61, 61)", "color", "whitesmoke"], [2, "font-weight", "bold", "font-size", "small"], [2, "text-align", "center"], ["type", "button", 1, "btn", "btn-primary", 2, "width", "100%", 3, "click"], [2, "margin-top", "3%", "display", "flex", "flex-direction", "row", "justify-content", "space-evenly"], [1, "btn", "btn-danger", 3, "click"], [1, "btn", "btn-primary", 2, "margin-left", "4%", 3, "click"], [2, "margin-top", "3%", "display", "flex", "flex-direction", "column", "justify-content", "center"], [1, "btn", "btn-primary", 2, "margin-top", "4%", 3, "click"]], template: function LoginComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 2);
@@ -6417,7 +6417,7 @@ LoginComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineCom
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.deviceMd || ctx.deviceLg);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.deviceXs || ctx.deviceSm);
-    } }, directives: [_textField_textField_component__WEBPACK_IMPORTED_MODULE_6__["TextFieldComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgIf"]], styles: [".hr[_ngcontent-%COMP%] {\n  background-color: black;\n}\n\n.card[_ngcontent-%COMP%] {\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);\n}\n\n.cardLeft[_ngcontent-%COMP%] {\n  border-top-left-radius: 12px;\n  border-bottom-left-radius: 12px;\n  background-color: white;\n  display: flex;\n  flex-direction: column;\n  padding-left: 6vw;\n  padding-right: 6vw;\n}\n\n.cardRight[_ngcontent-%COMP%] {\n  border-top-right-radius: 12px;\n  border-bottom-right-radius: 12px;\n  display: flex;\n  padding-top: 15%;\n  padding-bottom: 15%;\n  flex-direction: column;\n  justify-content: center;\n  text-align: center;\n  background-color: #b4d469;\n}\n\n.coloumnChange[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n}\n\n.deviceLgClass[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n}\n\n.deviceSmClass[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n}\n\n.deviceLgFontClass[_ngcontent-%COMP%] {\n  font-size: large;\n}\n\n.deviceSmFontClass[_ngcontent-%COMP%] {\n  font-size: small;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWNjb3VudC9sb2dpbi9sb2dpbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHVCQUFBO0FBQ0Y7O0FBQ0E7RUFDRSwwQ0FBQTtBQUVGOztBQUFBO0VBQ0EsNEJBQUE7RUFDQSwrQkFBQTtFQUNBLHVCQUFBO0VBQ0EsYUFBQTtFQUNBLHNCQUFBO0VBRUEsaUJBQUE7RUFDQSxrQkFBQTtBQUVBOztBQUNBO0VBQ0UsNkJBQUE7RUFDQSxnQ0FBQTtFQUdBLGFBQUE7RUFDQSxnQkFBQTtFQUNBLG1CQUFBO0VBQ0Esc0JBQUE7RUFDQSx1QkFBQTtFQUNBLGtCQUFBO0VBQ0EseUJBQUE7QUFBRjs7QUFFQTtFQUNFLGFBQUE7RUFDQSxzQkFBQTtBQUNGOztBQUNBO0VBQ0UsYUFBQTtFQUNBLG1CQUFBO0VBQ0EsOEJBQUE7QUFFRjs7QUFDQTtFQUNFLGFBQUE7RUFDQSxtQkFBQTtFQUNBLDhCQUFBO0FBRUY7O0FBQ0E7RUFDQSxnQkFBQTtBQUVBOztBQUNBO0VBQ0EsZ0JBQUE7QUFFQSIsImZpbGUiOiJzcmMvYXBwL2FjY291bnQvbG9naW4vbG9naW4uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuaHJ7XG4gIGJhY2tncm91bmQtY29sb3I6IGJsYWNrO1xufVxuLmNhcmQge1xuICBib3gtc2hhZG93OiAwIDRweCA4cHggMCByZ2JhKDAsIDAsIDAsIDAuMik7XG4gfVxuLmNhcmRMZWZ0e1xuYm9yZGVyLXRvcC1sZWZ0LXJhZGl1czogMTJweDtcbmJvcmRlci1ib3R0b20tbGVmdC1yYWRpdXM6IDEycHg7XG5iYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMjU1LCAyNTUsIDI1NSk7XG5kaXNwbGF5OiBmbGV4O1xuZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcblxucGFkZGluZy1sZWZ0OiA2dnc7XG5wYWRkaW5nLXJpZ2h0OiA2dnc7XG5cbn1cbi5jYXJkUmlnaHR7XG4gIGJvcmRlci10b3AtcmlnaHQtcmFkaXVzOiAxMnB4O1xuICBib3JkZXItYm90dG9tLXJpZ2h0LXJhZGl1czogMTJweDtcbiAgLy8gcGFkZGluZy1sZWZ0OiAxMCU7XG4gIC8vIHBhZGRpbmctcmlnaHQ6IDEwJTtcbiAgZGlzcGxheTogZmxleDtcbiAgcGFkZGluZy10b3A6IDE1JTtcbiAgcGFkZGluZy1ib3R0b206IDE1JTtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2I0ZDQ2OTtcbn1cbi5jb2xvdW1uQ2hhbmdle1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xufVxuLmRldmljZUxnQ2xhc3N7XG4gIGRpc3BsYXk6ZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IHJvdztcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xufVxuXG4uZGV2aWNlU21DbGFzc3tcbiAgZGlzcGxheTpmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogcm93O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG5cbn1cbi5kZXZpY2VMZ0ZvbnRDbGFzc3tcbmZvbnQtc2l6ZTogbGFyZ2U7XG59XG5cbi5kZXZpY2VTbUZvbnRDbGFzc3tcbmZvbnQtc2l6ZTogc21hbGw7XG59XG4iXX0= */"] });
+    } }, directives: [_textField_textField_component__WEBPACK_IMPORTED_MODULE_6__["TextFieldComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgIf"]], styles: [".hr[_ngcontent-%COMP%] {\n  background-color: black;\n}\n\n.card[_ngcontent-%COMP%] {\n  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);\n}\n\n.cardLeft[_ngcontent-%COMP%] {\n  border-top-left-radius: 12px;\n  border-bottom-left-radius: 12px;\n  background-color: white;\n  display: flex;\n  flex-direction: column;\n  padding-left: 6vw;\n  padding-right: 6vw;\n}\n\n.cardRight[_ngcontent-%COMP%] {\n  border-top-right-radius: 12px;\n  border-bottom-right-radius: 12px;\n  display: flex;\n  padding-top: 15%;\n  padding-bottom: 15%;\n  flex-direction: column;\n  justify-content: center;\n  text-align: center;\n  background-color: #b4d469;\n}\n\n.coloumnChange[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n}\n\n.deviceLgClass[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n}\n\n.deviceSmClass[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n}\n\n.deviceLgFontClass[_ngcontent-%COMP%] {\n  font-size: large;\n}\n\n.deviceSmFontClass[_ngcontent-%COMP%] {\n  font-size: small;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYWNjb3VudC9sb2dpbi9sb2dpbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHVCQUFBO0FBQ0Y7O0FBQ0E7RUFDRSwwQ0FBQTtBQUVGOztBQUFBO0VBQ0EsNEJBQUE7RUFDQSwrQkFBQTtFQUNBLHVCQUFBO0VBQ0EsYUFBQTtFQUNBLHNCQUFBO0VBRUEsaUJBQUE7RUFDQSxrQkFBQTtBQUVBOztBQUNBO0VBQ0UsNkJBQUE7RUFDQSxnQ0FBQTtFQUdBLGFBQUE7RUFDQSxnQkFBQTtFQUNBLG1CQUFBO0VBQ0Esc0JBQUE7RUFDQSx1QkFBQTtFQUNBLGtCQUFBO0VBQ0EseUJBQUE7QUFBRjs7QUFFQTtFQUNFLGFBQUE7RUFDQSxzQkFBQTtBQUNGOztBQUNBO0VBQ0UsYUFBQTtFQUNBLG1CQUFBO0VBQ0EsOEJBQUE7QUFFRjs7QUFDQTtFQUNFLGFBQUE7RUFDQSxtQkFBQTtFQUNBLDhCQUFBO0FBRUY7O0FBQ0E7RUFDQSxnQkFBQTtBQUVBOztBQUNBO0VBQ0EsZ0JBQUE7QUFFQSIsImZpbGUiOiJzcmMvYXBwL2FjY291bnQvbG9naW4vbG9naW4uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuaHJ7XG4gIGJhY2tncm91bmQtY29sb3I6IGJsYWNrO1xufVxuLmNhcmQge1xuICBib3gtc2hhZG93OiAwIDRweCA4cHggMCByZ2JhKDAsIDAsIDAsIDAuMik7XG4gfVxuLmNhcmRMZWZ0e1xuYm9yZGVyLXRvcC1sZWZ0LXJhZGl1czogMTJweDtcbmJvcmRlci1ib3R0b20tbGVmdC1yYWRpdXM6IDEycHg7XG5iYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMjU1LCAyNTUsIDI1NSk7XG5kaXNwbGF5OiBmbGV4O1xuZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcblxucGFkZGluZy1sZWZ0OiA2dnc7XG5wYWRkaW5nLXJpZ2h0OiA2dnc7XG5cbn1cbi5jYXJkUmlnaHR7XG4gIGJvcmRlci10b3AtcmlnaHQtcmFkaXVzOiAxMnB4O1xuICBib3JkZXItYm90dG9tLXJpZ2h0LXJhZGl1czogMTJweDtcbiAgLy8gcGFkZGluZy1sZWZ0OiAxMCU7XG4gIC8vIHBhZGRpbmctcmlnaHQ6IDEwJTtcbiAgZGlzcGxheTogZmxleDtcbiAgcGFkZGluZy10b3A6IDE1JTtcbiAgcGFkZGluZy1ib3R0b206IDE1JTtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2I0ZDQ2OTtcbn1cbi5jb2xvdW1uQ2hhbmdle1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xufVxuLmRldmljZUxnQ2xhc3N7XG4gIGRpc3BsYXk6ZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IHJvdztcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xufVxuXG4uZGV2aWNlU21DbGFzc3tcbiAgZGlzcGxheTpmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogcm93O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG5cbn1cbi5kZXZpY2VMZ0ZvbnRDbGFzc3tcbmZvbnQtc2l6ZTogbGFyZ2U7XG59XG5cbi5kZXZpY2VTbUZvbnRDbGFzc3tcbmZvbnQtc2l6ZTogc21hbGw7XG59XG5cbiJdfQ== */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](LoginComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"],
         args: [{
@@ -7752,17 +7752,17 @@ class AdminService {
         this.phase = "delivery phase";
     }
     addProducts(fd) {
-        return this.http.post('http://localhost:8000/api/products/', fd);
+        return this.http.post('/api/products/', fd);
     }
     shippingPhase(shippingPhase) {
-        return this.http.post('http://localhost:8000/api/orders/shipping', {
+        return this.http.post('/api/orders/shipping', {
             phase: this.phase = "shipping phase",
             ownerEmail: shippingPhase.ownerEmail,
             orderId: shippingPhase.orderId
         }, this.httpHeaders);
     }
     getAllOrders() {
-        return this.http.get('http://localhost:8000/api/orders/', this.httpHeaders);
+        return this.http.get('/api/orders/', this.httpHeaders);
     }
     getPhase() {
         return this.phase;
