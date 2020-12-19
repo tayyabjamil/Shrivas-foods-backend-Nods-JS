@@ -31,7 +31,7 @@ if(!user){
 }
 const restToken = user.createPaswordRestToken();
 await user.save({validateBeforeSave:false});
-// const resetUrl = `https://test-shrivasafoods.tk/resetPassword${restToken}`
+// const resetUrl = `https://localhost:8000/resetPassword${restToken}`
 const message = `forget password reset password at url ${restToken}`
 try {
     forgetPasswordMail(req.body.email,restToken,message);

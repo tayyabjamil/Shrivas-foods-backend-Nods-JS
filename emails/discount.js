@@ -11,8 +11,8 @@ const sendVerificationEmail = async (token,reciever) =>{
         const mailOption = {
             from:'tayyabjamil777@gmail.com',
             to:email, 
-            html: '<p>Get discount by clicking this link <a href="https://test-shrivasafoods.tk/discount/' + username + '">10% Discount</a></p>',
-            // html:'<p>Click <a href="https://test-shrivasafoods.tk/accountVerify/' + token + '">here</a> to confirm account </p>',
+            html: '<p>Get discount by clicking this link <a href="https://localhost:8000/discount/' + username + '">10% Discount</a></p>',
+            // html:'<p>Click <a href="https://localhost:8000/accountVerify/' + token + '">here</a> to confirm account </p>',
 
             text:username
         }
