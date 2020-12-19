@@ -21,9 +21,9 @@ app.use(morgan('dev'))
 
 app.use(express.static(path.join(__dirname,'public')))
 
-// app.use('/', express.static(path.join('public/uploads/')))
+app.use('/', express.static(path.join('public/uploads/')))
 app.use('*',(req,res)=>{
-    res.sendFile(path.join(__dirname,'public/index.html'))
+    res.sendFile(path.join(__dirname,'public'))
 })
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());

@@ -2,17 +2,17 @@ const mongoose = require('mongoose')
 const Grid = require('gridfs-stream');
 const app = require('./app')
 
+// const PORT = process.env.PORT || 8000;
+// app.listen(PORT , ()=>{
+//     console.log('listening at PORT '+PORT)
+// })
+  
+const express = require('express')
+const path = require('path')
+const PORT = process.env.PORT || 8000
 
-app.listen(process.env.port ,'0.0.0.0' , ()=>{
-    console.log('listening at port '+process.env.port)
-})
-// const dbpath = 'mongodb://localhost:27017/Nodejs'
-// mongoose.connect('mongodb+srv://tayyab:tayyab@123@cluster0.wzfwv.mongodb.net/shirivasFoods', 
-// {useNewUrlParser: true ,useCreateIndex:true,useFindAndModify:false}).then(() => {
-// console.log("Connected to Database");
-// }).catch((err) => {  
-//     console.log("Not Connected to Database ERROR! ", err);
-// });
+app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
 const dbpath = "mongodb+srv://tayyabjamil:tayyabjamil123@cluster0.wzfwv.mongodb.net/shirivasFoods";
 const conn = mongoose.createConnection(dbpath);
 
