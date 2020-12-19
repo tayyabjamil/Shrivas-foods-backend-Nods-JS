@@ -14,6 +14,10 @@ router.route('/signIn')
 
 .post(userController.signIn)
  
+router.route('/signUp')
+
+.post(userController.signUp)
+ 
 
 
 router.route('/login')

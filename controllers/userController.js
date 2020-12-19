@@ -1,8 +1,8 @@
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
-const sendVerificationEmail = require("../email");
+const sendVerificationEmail = require("../emails/accountVerification");
 const bcrypt = require("bcrypt");
-const sendEmail = require('../email')
+
 exports.signUp = async (req, res) => {
   try {
     const alreadyUser = await User.find({ email: req.body.email });
@@ -43,13 +43,14 @@ exports.login = async (req, res) => {
         message: "Account not created ",
       });
     } else {
-      console.log(user[0].password);
-      username = user[0].username;
+      
+      username = user[0].firstName;
       email = user[0].email;
       contact = user[0].contact;
       userId = user[0]._id;
       refrenceId = user[0].refrenceId;
       role = user[0].role;
+    
       //  if(req.body.provider ==='GOOGLE'){
       //   token= req.body.idToken
       //     res.status(201).json({token ,contact,username,userId,refrenceId,email,role})
@@ -147,7 +148,7 @@ exports.signIn = async (req, res) => {
 
     if (user.length > 0) {
       console.log(user[0].password);
-      username = user[0].username;
+      username = user[0].firstName;
       email = user[0].email;
       contact = user[0].contact;
       userId = user[0]._id;
@@ -184,18 +185,38 @@ exports.signIn = async (req, res) => {
       });
     } 
     else {
-      const user = await User.create(req.body);
+      res.status(401).json({
+        message:'Not Signed In first sign in'
+      });
+    }
+  } catch (error) {
+    res.status(404).json({
+      status: "failed to create account",
+      message: error,
+    });
+  }
+};
+exports.signUp = async (req, res) => {
+  try {
+   const Check = await User.find({ email: req.body.email });
+
+    if (Check.length > 0) {
+    res.status(404).json({
+  message:'Already have an account'
+     })
+    }else{
+    const user = await User.create(req.body); 
+
       const { username, email, password } = req.body;
       let payload = { subject: user._id };
       const token = jwt.sign(
-        { username, email, password },
+        {  email, password },
         "accountactivatekey123",
         { expiresIn: "20m" }
       );
       user.verification = "not verified";
       user.verifyAccountToken = token;
       await user.save({ validateBeforeSave: false });
-      sendVerificationEmail(token, req.body.email);
       res.status(201).json({
         user,
       });
