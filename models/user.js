@@ -5,14 +5,10 @@ const crypto = require("crypto")
    
  var userSchema = mongoose.Schema({
   
-    firstName:{
+    username:{
        type: String,
-       required:[true,'must add firstName']
+       required:[true,'must add username']
     },
-    lastName:{
-      type: String,
-      required:[true,'must add lastName']
-   },
     email:{
         type: String,
         required:[true,'must add user email ']
@@ -22,7 +18,10 @@ const crypto = require("crypto")
         required:[true,'must add user Password']
      },
      
-    
+     contact:{
+      type: String,
+      required:[true,'must add contact']
+   },
 
 role:{
     type:String,
