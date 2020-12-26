@@ -12,7 +12,7 @@ const forgetPasswordMail = async (email,restToken,message) =>{
             from:'tayyabjamil777@gmail.com',
             to:email, 
             html:
-            '<h1>GRUBHUB</h1><h2>Hello</h2><h4>did you forget your password?Create a new one by Clicking the button below</h4><h4><a href="https://localhost:8000/resetPassword/' + 
+            '<h1>GRUBHUB</h1><h2>Hello</h2><h4>did you forget your password?Create a new one by Clicking the button below</h4><h4><a href="https://test-shrivasafoods.tk/resetPassword/' + 
             restToken + '"><button>Create new Password</button></a></h4><h4>This link will expire in 2 days.Did you get this link by mistake?No worries just Ignore it</h4><br><h2>Questoins</h2><h4>Feel free to react out customer casre 24/7</h4>',
               
             text:message
