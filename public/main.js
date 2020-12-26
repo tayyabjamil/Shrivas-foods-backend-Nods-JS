@@ -1314,7 +1314,7 @@ class AccountService {
         };
     }
     createuserAccount(newUser) {
-        return this.http.post('http://localhost:8000/api/users/', {
+        return this.http.post('https://calm-lake-26690.herokuapp.com/api/users/', {
             firstName: newUser.firstName,
             lastName: newUser.lastName,
             email: newUser.email,
@@ -1326,7 +1326,7 @@ class AccountService {
         }, this.httpHeaders);
     }
     signUp(newUser) {
-        return this.http.post('http://localhost:8000/api/users/signUp', {
+        return this.http.post('https://calm-lake-26690.herokuapp.com/api/users/signUp', {
             firstName: newUser.firstName,
             lastName: newUser.lastName,
             email: newUser.email,
@@ -1338,7 +1338,7 @@ class AccountService {
         }, this.httpHeaders);
     }
     signIn(newUser) {
-        return this.http.post('http://localhost:8000/api/users/signIn', {
+        return this.http.post('https://calm-lake-26690.herokuapp.com/api/users/signIn', {
             firstName: newUser.firstName,
             lastName: newUser.lastName,
             email: newUser.email,
@@ -1350,7 +1350,7 @@ class AccountService {
         }, this.httpHeaders);
     }
     login(user) {
-        return this.http.post('http://localhost:8000/api/users/login', {
+        return this.http.post('https://calm-lake-26690.herokuapp.com/api/users/login', {
             email: user.email,
             password: user.password,
             idToken: user.idToken,
@@ -1359,25 +1359,25 @@ class AccountService {
     }
     forgetPassword(data) {
         // const email = this.myauthService.getemail()
-        return this.http.post('http://localhost:8000/api/users/forgetPassword/', {
+        return this.http.post('https://calm-lake-26690.herokuapp.com/api/users/forgetPassword/', {
             email: data.email
         }, this.httpHeaders);
     }
     resetPassword(newPass) {
-        return this.http.post('http://localhost:8000/api/users/resetPassword/', {
+        return this.http.post('https://calm-lake-26690.herokuapp.com/api/users/resetPassword/', {
             confirmPassword: newPass.confirmPassword,
             password: newPass.newPassword,
             resetToken: newPass.resetToken
         }, this.httpHeaders);
     }
     accountVerify(data) {
-        return this.http.post('http://localhost:8000/api/users/accountVerify/', {
+        return this.http.post('https://calm-lake-26690.herokuapp.com/api/users/accountVerify/', {
             token: data.accountToken,
             isVerify: data.isVerify,
         }, this.httpHeaders);
     }
     editInfo(data) {
-        return this.http.post('http://localhost:8000/api/users/editInfo/', {
+        return this.http.post('https://calm-lake-26690.herokuapp.com/api/users/editInfo/', {
             userId: this.myauthService.getID(),
             username: data.username,
             email: data.email,
@@ -1385,7 +1385,7 @@ class AccountService {
         }, this.httpHeaders);
     }
     editPassword(data) {
-        return this.http.post('http://localhost:8000/api/users/editPassword/', {
+        return this.http.post('https://calm-lake-26690.herokuapp.com/api/users/editPassword/', {
             userId: this.myauthService.getID(),
             oldPassword: data.oldPassword,
             newPassword: data.newPassword,
@@ -1486,7 +1486,7 @@ class CartService {
     order(orderData) {
         const username = this.myauthService.getusername();
         const user = this.myauthService.getID();
-        return this.http.post('http://localhost:8000/api/orders/', {
+        return this.http.post('https://calm-lake-26690.herokuapp.com/api/orders/', {
             cartData: orderData.cartItems,
             total: orderData.total,
             user: user,
@@ -1970,22 +1970,22 @@ class ProductService {
         };
     }
     getProducts() {
-        return this.http.get('http://localhost:8000/api/products', this.httpHeaders);
+        return this.http.get('https://calm-lake-26690.herokuapp.com/api/products', this.httpHeaders);
     }
     getOrders() {
-        return this.http.get('http://localhost:8000/api/orders/' + this.myauthService.getID(), this.httpHeaders);
+        return this.http.get('https://calm-lake-26690.herokuapp.com/api/orders/' + this.myauthService.getID(), this.httpHeaders);
     }
     featuredProducts() {
-        return this.http.get('http://localhost:8000/api/products/featuredProducts', this.httpHeaders);
+        return this.http.get('https://calm-lake-26690.herokuapp.com/api/products/featuredProducts', this.httpHeaders);
     }
     getCatagoryProducts(catagory) {
-        return this.http.get('http://localhost:8000/api/products/catagory/' + catagory, this.httpHeaders);
+        return this.http.get('https://calm-lake-26690.herokuapp.com/api/products/catagory/' + catagory, this.httpHeaders);
     }
     productImageUrl(name) {
-        return 'http://localhost:8000/api/products/image/' + name;
+        return 'https://calm-lake-26690.herokuapp.com/api/products/image/' + name;
     }
     referFriend(data) {
-        return this.http.post('http://localhost:8000/api/users/referFriend', {
+        return this.http.post('https://calm-lake-26690.herokuapp.com/api/users/referFriend', {
             userId: this.myauthService.getID(),
             refrenceCode: data.refrenceCode,
             friendEmail: data.friendEmail
@@ -8874,17 +8874,17 @@ class AdminService {
         this.phase = "delivery phase";
     }
     addProducts(fd) {
-        return this.http.post('http://localhost:8000/api/products/', fd);
+        return this.http.post('https://calm-lake-26690.herokuapp.com/api/products/', fd);
     }
     shippingPhase(shippingPhase) {
-        return this.http.post('http://localhost:8000/api/orders/shipping', {
+        return this.http.post('https://calm-lake-26690.herokuapp.com/api/orders/shipping', {
             phase: this.phase = "shipping",
             ownerEmail: shippingPhase.ownerEmail,
             orderId: shippingPhase.orderId
         }, this.httpHeaders);
     }
     getAllOrders() {
-        return this.http.get('http://localhost:8000/api/orders/', this.httpHeaders);
+        return this.http.get('https://calm-lake-26690.herokuapp.com/api/orders/', this.httpHeaders);
     }
     getPhase() {
         return this.phase;
