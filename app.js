@@ -14,6 +14,7 @@ app.use(cors());
 const productRouter = require('./routes/product')
 const userRouter = require('./routes/user')
 const orderRouter = require('./routes/order')
+const locationRouter = require('./routes/location')
 var path = require("path");
 
 // app.use(compression())
@@ -43,5 +44,6 @@ app.use((req,res,next)=>{
 // app.use('/api',limiter)
 app.use('/api/users',userRouter)
 app.use('/api/products',productRouter)
-app.use('/api/orders',orderRouter)
+app.use('/api/orders', orderRouter)
+app.use('/api/location',locationRouter)
 module.exports = app;
