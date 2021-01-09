@@ -11,7 +11,7 @@ const sendVerificationEmail = async (token,reciever) =>{
         const mailOption = {
             from:'tayyabjamil777@gmail.com',
             to:reciever, 
-            html:'<p>Click <a href="https://test-shrivasafoods.tk/accountVerify/' + token + '">here</a> to confirm account </p>',
+            html:'<p>Click <a href="http://localhost:4200/accountVerify/' + token + '">here</a> to confirm account </p>',
            
         }
         await transporter.sendMail(mailOption,(req,res,error)=>{
