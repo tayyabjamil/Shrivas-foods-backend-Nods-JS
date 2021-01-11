@@ -4,10 +4,14 @@ const bcrypt = require("bcrypt")
 const crypto = require("crypto")
    
  var userSchema = mongoose.Schema({
-  
-    username:{
+   lastName:{
+      type: String,
+      required:[true,'must add firstname']
+   },
+
+    firstName:{
        type: String,
-       required:[true,'must add username']
+       required:[true,'must add lastname']
     },
     email:{
         type: String,
@@ -20,7 +24,7 @@ const crypto = require("crypto")
      
      contact:{
       type: String,
-      required:[true,'must add contact']
+      // required:[true,'must add contact']
    },
 
 role:{

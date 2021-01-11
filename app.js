@@ -20,11 +20,11 @@ var path = require("path");
 app.use(morgan('dev'))
 
 app.use(express.static(path.join(__dirname,'public')))
-
-// app.use('/', express.static(path.join('public/uploads/')))
-app.use('*',(req,res)=>{
-    res.sendFile(path.join(__dirname,'public/index.html'))
-})
+app.disable('etag');
+app.use('/', express.static(path.join('public/uploads/')))
+// app.use('*',(req,res)=>{
+//     res.sendFile(path.join(__dirname,'public/index.html'))
+// })
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));

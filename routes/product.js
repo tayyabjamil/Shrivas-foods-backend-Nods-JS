@@ -41,12 +41,16 @@ let gfs;
 router.route('/')
 .get(productController.getProducts)
 .post(upload.single('productImage'), productController.postProducts)
-.delete(authController.ristrictsTo('admin'),
+.delete(
 productController.deleteProduct)
-// router.route('/tourStats')
-// .get(tourController.getTourStats)
-// router.route('/tours-within/:distance/center/:latlng/unit/:unit').post(tourController.toursWithin)
-// .get(tourController.getTourStats) 
+
+
+router.route('/delete')
+.post(productController.deleteProduct)
+
+
+router.route('/editProduct')
+.post(upload.single('productImage'),productController.editProduct)  
 router.route('/images')
 .get(productController.getProductImages)
 
@@ -63,8 +67,6 @@ router.route('/:id')
 .get(productController.getProductImage)
 router.route('/catagory/:catagory')
 .get(productController.getCatagoryProducts)
-// .get(tourController.getApiTours)
-// .patch(tourController.patchApiTours)  
 // .delete(authController.ristrictsTo('admin'),
 //  tourController.deleteApiTours)
  

@@ -10,7 +10,11 @@ router.route('/')
 .get(userController.login)
 .post(userController.signUp)
 
+router.route('/signUpSocial')
+.post(userController.signUp)
 
+router.route('/signInSocial')
+.post(userController.login)
 
 router.route('/login')
 .post(userController.login)
