@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\hp\Desktop\foodWebapp\PICKSY\src\polyfills.ts */"hN/g");
+module.exports = __webpack_require__(/*! /Users/srinivasgoud/Documents/git-hub/jamil-shrivasafoods/PICKSKY-Front-end-Angular/src/polyfills.ts */"hN/g");
 
 
 /***/ }),
