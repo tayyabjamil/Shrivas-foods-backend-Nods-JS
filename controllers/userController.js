@@ -1,6 +1,6 @@
 const User = require("../models/user")
 const jwt = require('jsonwebtoken')
-const sendVerificationEmail = require('../email')
+const sendVerificationEmail = require('../EmailRefrence')
 const bcrypt = require("bcrypt")
 exports.signUp = async (req, res) => {
     try {
@@ -41,8 +41,14 @@ exports.login = async (req, res) => {
             });
 
         } else {
+            if(user[0].verification === "not verified"){
+                return res.status(404).json({
+                    message: "Account not verified",
+                });
+           
+            }
     console.log(user[0].password)
-    username=user[0].username
+    username=user[0].firstName
     email=user[0].email
     contact = user[0].contact
     userId=user[0]._id

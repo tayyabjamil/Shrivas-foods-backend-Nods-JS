@@ -1,5 +1,5 @@
 const User = require('../models/user')
-const sendRefrenceEmail = require('../email')
+const EmailForgetPassword = require('../EmailForgetPassword')
 const jwt = require('jsonwebtoken')
 const bcrypt = require("bcrypt")
 const mailgun = require("mailgun-js");
@@ -31,7 +31,7 @@ await user.save({validateBeforeSave:false});
 // const resetUrl = `http://localhost:4200/resetPassword${restToken}`
 const message = `forget password reset password at url ${restToken}`
 try {
-    sendEmail(
+    EmailForgetPassword(
 
         req.body.email,
         restToken,
