@@ -1,6 +1,6 @@
 const User = require("../models/user")
 const jwt = require('jsonwebtoken')
-const sendVerificationEmail = require('../EmailRefrence')
+const EmailAccountConfirm = require('../EmailAccountConfirm')
 const bcrypt = require("bcrypt")
 exports.signUp = async (req, res) => {
     try {
@@ -19,7 +19,7 @@ exports.signUp = async (req, res) => {
       user.verification = "not verified"
       user.verifyAccountToken = token
       await user.save({validateBeforeSave:false});
-      sendVerificationEmail(token,req.body.email)
+      EmailAccountConfirm(token,req.body.email)
         res.status(201).json({
             user,
         })
@@ -34,8 +34,11 @@ exports.signUp = async (req, res) => {
 exports.login = async (req, res) => {
     try {
       
-        const user = await User.find({ email: req.body.email })
-        if (!user) {
+        const user = await User.find({$or:[
+             {email: req.body.email},
+             {phoneNo:req.body.email}
+        ]})
+        if (user.length == 0) {
             return res.status(404).json({
                 message: "Auth User failed",
             });
@@ -50,7 +53,7 @@ exports.login = async (req, res) => {
     console.log(user[0].password)
     username=user[0].firstName
     email=user[0].email
-    contact = user[0].contact
+    phoneNo = user[0].phoneNo
     userId=user[0]._id
     refrenceId=user[0].refrenceId
     role=user[0].role
@@ -64,7 +67,7 @@ res.cookie('jwt',token,{
     httpOnly:true
 
 })
-res.status(201).json({ token ,contact,username,userId,refrenceId,email,role})
+res.status(201).json({ token ,phoneNo,username,userId,refrenceId,email,role})
                 }
                 else {
                     return res.status(401).json({
@@ -126,7 +129,7 @@ exports.updateInfo = async (req,res)=>{
 if(user){
       
     user.email = req.body.email,
-    user.contact = req.body.contact,
+    user.phoneNo = req.body.phoneNo,
     user.username = req.body.username
   
 }

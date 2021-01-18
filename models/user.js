@@ -22,7 +22,7 @@ const crypto = require("crypto")
         required:[true,'must add user Password']
      },
      
-     contact:{
+     phoneNo:{
       type: String,
       // required:[true,'must add contact']
    },
