@@ -3,9 +3,9 @@ const Grid = require('gridfs-stream');
 const app = require('./app')
 
 
-const port = process.env.port || 8000;
+const PORT = process.env.PORT || 8000
 app.listen(port , ()=>{
-    console.log('listening at port '+port)
+    app.listen(PORT, () => console.log(`Listening on ${PORT}`))
 })
 
 const dbpath = "mongodb+srv://tayyabjamil:tayyabjamil123@cluster0.wzfwv.mongodb.net/shirivasFoods";
