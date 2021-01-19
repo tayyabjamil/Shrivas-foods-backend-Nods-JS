@@ -14,6 +14,8 @@ app.use(cors());
 const productRouter = require('./routes/product')
 const userRouter = require('./routes/user')
 const orderRouter = require('./routes/order')
+const locationRouter = require('./routes/location')
+const shippingRouter = require('./routes/shipping')
 var path = require("path");
 
 // app.use(compression())
@@ -22,9 +24,9 @@ app.use(morgan('dev'))
 app.use(express.static(path.join(__dirname,'public')))
 app.disable('etag');
 app.use('/', express.static(path.join('public/uploads/')))
-// app.use('*',(req,res)=>{
-//     res.sendFile(path.join(__dirname,'public/index.html'))
-// })
+ app.use('*',(req,res)=>{
+   res.sendFile(path.join(__dirname,'public'))
+ })
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
@@ -43,5 +45,7 @@ app.use((req,res,next)=>{
 // app.use('/api',limiter)
 app.use('/api/users',userRouter)
 app.use('/api/products',productRouter)
-app.use('/api/orders',orderRouter)
+app.use('/api/orders', orderRouter)
+app.use('/api/location', locationRouter)
+app.use('/api/shipping',shippingRouter)
 module.exports = app;
