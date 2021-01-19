@@ -1,4 +1,3 @@
-
 const express = require('express')
 
 const userController = require('./../controllers/userController')
@@ -9,8 +8,7 @@ const router = express.Router();
 router.route('/')
 .get(userController.login)
 .post(userController.signUp)
- 
-router.route('/signIn')
+
 router.route('/signUpSocial')
 .post(userController.signUp)
 
