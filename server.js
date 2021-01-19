@@ -4,9 +4,7 @@ const app = require('./app')
 
 
 const PORT = process.env.PORT || 8000
-app.listen(port , ()=>{
-    app.listen(PORT, () => console.log(`Listening on ${PORT}`))
-})
+app.listen(PORT, () => console.log(`Listening on ${PORT}`))
 
 const dbpath = "mongodb+srv://tayyabjamil:tayyabjamil123@cluster0.wzfwv.mongodb.net/shirivasFoods";
 const conn = mongoose.createConnection(dbpath);
