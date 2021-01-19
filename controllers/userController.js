@@ -143,6 +143,6 @@ username=user.username
 email=user.email
 
 await user.save();
-res.status(200).json({email,username})
-
+    res.status(200).json({ email, username })
+    
 }

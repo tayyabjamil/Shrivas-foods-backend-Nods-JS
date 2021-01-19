@@ -110,7 +110,7 @@ exports.createOrder = async(req,res)=>{
     exports.shippingPhase = async(req,res)=>{
         try {
          const message ="Your order is progressed to shippiping phase"
-           Order.findByIdAndUpdate({_id:req.body.orderId},{phase:"shipping"}, function(err, result) {
+           Order.findByIdAndUpdate({_id:req.body.orderId},{phase:"shipping phase"}, function(err, result) {
             if (err) {
                console.log(err)
             }
