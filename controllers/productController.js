@@ -30,7 +30,7 @@ exports.postProducts =   async (req,res)=>{
             price: req.body.price,
             detail: req.body.detail,
             catagory: req.body.catagory,
-            productCount:1,
+            productCount:0,
             unitTotal:req.body.price,
             productOrders:req.body.productOrders,
            
@@ -86,7 +86,7 @@ exports.postProducts =   async (req,res)=>{
     exports.deleteProduct = async(req,res)=>{
         try {
 
-            const product = await Product.findOne({ _id: req.body.productId })
+            const product = await Product.findOne({ _id: req.body.id })
             if (!product) {
                 return res.status(404).json({
                     message: "No product Fount",
@@ -102,6 +102,22 @@ exports.postProducts =   async (req,res)=>{
             res.status(404).json({
                 status:'failed',
                 message:error  
+            })
+        }
+    }
+    exports.editProduct = async(req,res)=>{
+        
+           
+        try {
+            const product = await Product.findByIdAndUpdate(req.body._id,req.body)
+        res.status(201).json({
+            status:'success',  
+            updatedProduct:product
+        }) 
+        } catch (error) {
+            res.status(404).json({
+                status:'failed in updating Product',
+                message:error
             })
         }
     }

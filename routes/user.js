@@ -11,14 +11,11 @@ router.route('/')
 .post(userController.signUp)
  
 router.route('/signIn')
-
-.post(userController.signIn)
- 
-router.route('/signUp')
-
+router.route('/signUpSocial')
 .post(userController.signUp)
- 
 
+router.route('/signInSocial')
+.post(userController.login)
 
 router.route('/login')
 .post(userController.login)

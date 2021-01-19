@@ -5582,6 +5582,31 @@ class FooterComponent {
             console.log("error" + err);
         });
     }
+    // getAmount(country, quantity): any {
+    // var finalPrice;
+    // var isCountry;
+    // const calculatedQuantity = this.getQuantity(quantity); 
+    //   function isUSA() {
+    //     var amount = { 5: 560, 10: 525, 15: 460, 20: 445, 25: 440, 30: 430, 35: 420, 40: 415, 45: 410, 50: 405, 55: 400, 60: 395 };
+    //     return finalPrice = amount[calculatedQuantity]  * (calculatedQuantity+ 2)
+    //   }
+    //   function isUK() {
+    //     var amount = { 5: 560, 10: 525, 15: 460, 20: 445, 25: 440, 30: 430, 35: 420, 40: 415, 45: 410, 50: 405, 55: 400, 60: 395 };
+    //     return finalPrice = amount[calculatedQuantity] * (calculatedQuantity + 2)
+    //   }
+    //   var countries = {
+    //     'USA': isUSA(),
+    //     'UK': isUK(),
+    //   };
+    //   isCountry = countries[country];
+    //   console.log(finalPrice + " Final Price");
+    //   return finalPrice;
+    // }
+    // getQuantity(quantity:number) {
+    //   const calculatedQuantity  = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60].reduce((prev, curr) => Math.abs(curr - quantity) < Math.abs(prev - quantity) ? curr : prev);
+    //   console.log(calculatedQuantity + " KGS");
+    //   return calculatedQuantity;
+    // };
     getHeaderNames(indx) { return _appconstants__WEBPACK_IMPORTED_MODULE_1__["HeaderConstants"][indx]; }
     getSpecialConstants(indx) { return _appconstants__WEBPACK_IMPORTED_MODULE_1__["SpecialConstants"][indx]; }
     getAboutusConstants(indx) { return _appconstants__WEBPACK_IMPORTED_MODULE_1__["AboutusConstants"][indx]; }

@@ -5,7 +5,13 @@ moment().format('MM/DD/YYYY')
   
     cartData: [],
     total:Number,
-    username:String,
+    firstName:String,
+    lastName:String,
+    adress:String,
+    city:String,
+    contry:String,
+    postalCode:String,
+    shippingMethod:String,
     phase:String,
     ownerEmail:String,
     user:

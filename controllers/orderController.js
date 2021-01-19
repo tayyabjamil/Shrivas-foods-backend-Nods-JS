@@ -3,7 +3,7 @@ const { Query } = require('mongoose')
 const User = require("../models/user")
 const mongoose = require("mongoose");
 const Product = require('../models/product');
-const sendEmailCustomer = require('../emails/customerEmail')
+const sendEmailCustomer = require('../EmailRefrence')
 const ObjectId = mongoose.Types.ObjectId;
 exports.getAllOrders = async(req,res)=>{
     try {
