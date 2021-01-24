@@ -10558,7 +10558,7 @@ class AdminService {
         return this.http.get('https://calm-lake-26690.herokuapp.com/api/orders/', this.httpHeaders);
     }
     updateBonus() {
-        return this.http.post('http://localhost:8000/api/users/updateBonus/' + this.authService.getID(), this.httpHeaders);
+        return this.http.post('https://calm-lake-26690.herokuapp.com/api/users/updateBonus/' + this.authService.getID(), this.httpHeaders);
     }
     getPhase() {
         return this.phase;
