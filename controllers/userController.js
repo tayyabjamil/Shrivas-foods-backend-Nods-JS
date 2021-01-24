@@ -16,14 +16,24 @@ exports.signUp = async (req, res) => {
       const { username, email, password } = req.body
       let payload = { subject: user._id };
       const token = jwt.sign({ username, email, password }, 'accountactivatekey123', { expiresIn: '20m' })
+      if(user.provider){
+        user.verification = "verified"
+        await user.save({validateBeforeSave:false});
+        res.status(201).json({
+          user,
+      })
+  
+    }else{
       user.verification = "not verified"
       user.verifyAccountToken = token
-      await user.save({validateBeforeSave:false});
       EmailAccountConfirm(token,req.body.email)
         res.status(201).json({
             user,
         })
-
+        await user.save({validateBeforeSave:false});
+      
+    }
+    
     }} catch (error) {
         res.status(404).json({
             status: 'failed to create account',
@@ -40,7 +50,7 @@ exports.login = async (req, res) => {
         ]})
         if (user.length == 0) {
             return res.status(404).json({
-                message: "Auth User failed",
+                message: "No Account Create Account First",
             });
 
         } else {
@@ -57,7 +67,8 @@ exports.login = async (req, res) => {
     userId=user[0]._id
     refrenceId=user[0].refrenceId
     role=user[0].role
-            bcrypt.compare(req.body.password, user[0].password, (err, result) => {
+          
+    bcrypt.compare(req.body.password, user[0].password, (err, result) => {
                 if (result) {
                     let payload = { subject: user._id };
                     const token = jwt.sign(payload, "secretKey")

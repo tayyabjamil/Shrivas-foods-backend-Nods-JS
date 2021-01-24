@@ -72,8 +72,8 @@ if(!user){
   if(req.body.password === req.body.confirmPassword){
     user.password=req.body.password
     // user.confirmPassword = req.body.confirmPassword
-    user.passwordResetToken = undefined
-    user.passwordResetExpires = undefined
+    // user.passwordResetToken = undefined
+    // user.passwordResetExpires = undefined
     await user.save();
     let payload = { subject: user._id };
     const token = jwt.sign(payload, "secretKey")
