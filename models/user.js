@@ -37,7 +37,8 @@ accountBonus:Number,
 verifyAccountToken:String,
 passwordResetToken:String,
 passwordResetExpires:Date,
-verification:String
+verification:String,
+provider:String,
 })
 function makeid(length) {
     var result           = '';
