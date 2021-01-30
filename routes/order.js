@@ -12,7 +12,11 @@ router.route('/:id')
 .get(orderController.getMyOrders)
 
 router.route('/shipping')
-.post(orderController.shippingPhase)
+.post(orderController.nextPhase)
+
+
+router.route('/cancelOrder/:id')
+.post(orderController.cancelOrder)
 
 router.route('/filter')
 .post(orderController.filterOrders)

@@ -1,6 +1,9 @@
 const User = require('../models/user')
 const EmailForgetPassword = require('../EmailForgetPassword')
+const EmailRefrence = require('../EmailRefrence')
+
 const jwt = require('jsonwebtoken')
+
 const bcrypt = require("bcrypt")
 const mailgun = require("mailgun-js");
 const crypto = require("crypto")
@@ -97,15 +100,15 @@ exports.referFriend = async(req,res)=>{
 
             })
             if(user){
-                username = user.username
+                username = user.firstName
        
-        sendRefrenceEmail(
+                EmailRefrence(
 
             req.body.friendEmail,
             req.body.refrenceCode,
             username
           );
-          return res.status(200).json({
+          return res.status(201).json({
             message:"code sent"
         })   
     }else{
@@ -114,6 +117,9 @@ exports.referFriend = async(req,res)=>{
         })
     }
 } catch (error) {
-        
+    return res.status(404).json({
+        message: "error",
+    });
+
     }   
    }

@@ -13,7 +13,7 @@ require('dotenv').config()
                 const mailOption = {
                     from:'tayyabjamil777@gmail.com',
                     to:email, 
-                    html: '<p>Get discount by clicking this link <a href="http://localhost:4200/discount/' + username + '">10% Discount</a></p>',
+                    html: '<p>Get discount by using this '+ code +' code in your next order to give  <a href="http://localhost:4200/discount/' + username + '">10% Discount</a></p>',
                     // html:'<p>Click <a href="http://localhost:4200/accountVerify/' + token + '">here</a> to confirm account </p>',
        
                     text:username
