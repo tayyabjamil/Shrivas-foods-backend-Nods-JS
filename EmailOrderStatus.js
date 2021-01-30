@@ -18,7 +18,7 @@ require('dotenv').config()
             await transporter.sendMail(mailOption,(req,res,error)=>{
                 if(res){
                     res.status(201).json({
-                        message:"mail sent to your gmail  account"
+                        message:""
                     })
                   
         }

@@ -38,4 +38,7 @@ router.route('/resetPassword')
 router.route('/referFriend')
 .post(authController.referFriend)
 
+router.route('/updateBonus/:id')
+.post(userController.updateBonus)
+
 module.exports = router

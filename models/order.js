@@ -14,6 +14,7 @@ moment().format('MM/DD/YYYY')
     shippingMethod:String,
     phase:String,
     ownerEmail:String,
+    cancelOrder:Boolean,
     user:
         {
           type:mongoose.Schema.ObjectId,
