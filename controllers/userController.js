@@ -177,8 +177,13 @@ exports.updateBonus = async (req, res) => {
     }
   } catch (error) {
     res.status(404).json({
-      status: "failed in updating user bonus",
-      message: error,
-    });
-  }
-};
+        message:"user not found"
+    })
+}
+username=user.username
+email=user.email
+
+await user.save();
+res.status(200).json({email,username})
+
+}
