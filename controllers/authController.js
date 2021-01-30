@@ -108,7 +108,7 @@ exports.referFriend = async(req,res)=>{
             req.body.refrenceCode,
             username
           );
-          return res.status(200).json({
+          return res.status(201).json({
             message:"code sent"
         })   
     }else{

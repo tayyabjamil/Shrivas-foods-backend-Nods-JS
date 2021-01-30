@@ -1,10 +1,8 @@
 const Order = require("../models/order");
-const { Query } = require("mongoose");
 const User = require("../models/user");
 const mongoose = require("mongoose");
 const Product = require("../models/product");
-const sendEmailCustomer = require("../EmailRefrence");
-const ObjectId = mongoose.Types.ObjectId;
+const EmailOrderStatus = require("../EmailOrderStatus");
 exports.getAllOrders = async (req, res) => {
     try {
         const orders = await Order.find();
@@ -97,7 +95,7 @@ exports.createOrder = async (req, res) => {
 };
 exports.nextPhase = async (req, res) => {
     try {
-        const message = "Your order is progressed to next phase"
+        const message = "Your order is progressed to " + req.body.phase +" phase"
         Order.findByIdAndUpdate(
             { _id: req.body.orderId },
             { phase: req.body.phase },
@@ -112,7 +110,8 @@ exports.nextPhase = async (req, res) => {
                 }
             }
         );
-        sendEmailCustomer(req.body.ownerEmail, message);
+        const phase = req.body.phase
+        EmailOrderStatus(req.body.ownerEmail, message,phase);
 
         // const product = Product.find({_id:req.body})
     } catch (error) {
@@ -134,7 +133,8 @@ exports.cancelOrder = async (req, res) => {
     else{
         Order.findOneAndUpdate(
             { _id: req.params.id },
-            { cancelOrder: true },
+            { cancelOrder: true,phase:"canceled" },
+            
             function (err, result) {
                 if (err) {
                     console.log(err);
@@ -143,8 +143,11 @@ exports.cancelOrder = async (req, res) => {
                 }
             }
         );  
-         order[0].cancelOrder=true
-         console.log(order[0].cancelOrder)
+
+        
+        order[0].cancelOrder=true
+        order[0].phase="canceled"
+        console.log(order[0].cancelOrder)
          res.status(201).json({
             status: "success",
         

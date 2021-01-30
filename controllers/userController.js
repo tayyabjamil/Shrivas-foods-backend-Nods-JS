@@ -89,7 +89,7 @@ exports.login = async (req, res) => {
               accountBonus,
             });
         } else {
-          return res.status(401).json({
+          return res.status(404).json({
             message: "Auth Password failed",
           });
         }
@@ -129,7 +129,7 @@ exports.updatePassword = async (req, res) => {
         message: "password updated",
       });
     } else {
-      return res.status(401).json({
+      return res.status(404).json({
         message: "Old Password is incorrect",
       });
     }
@@ -155,8 +155,9 @@ exports.updateInfo = async (req, res) => {
 exports.updateBonus = async (req, res) => {
  let accountBonus;
     try {
-  const user =  User.findOneAndUpdate(
-        { _id: req.params.id ,accountBonus: { $gt: 0 } },
+  const user =  User.findByIdAndUpdate(
+        
+        { _id: req.params.id  },
         { $inc: { accountBonus: -1 } },
         function (err, result) {
             if (err) {
