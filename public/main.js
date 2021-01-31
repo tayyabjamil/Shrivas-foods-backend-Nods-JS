@@ -1379,7 +1379,7 @@ class AccountService {
         };
     }
     createuserAccount(newUser) {
-        return this.http.post('https://calm-lake-26690.herokuapp.com/api/users/', {
+        return this.http.post('http://localhost:8000/api/users/', {
             firstName: newUser.firstName,
             lastName: newUser.lastName,
             email: newUser.email,
@@ -1391,7 +1391,7 @@ class AccountService {
         }, this.httpHeaders);
     }
     signUp(newUser) {
-        return this.http.post('https://calm-lake-26690.herokuapp.com/api/users/signUpSocial', {
+        return this.http.post('http://localhost:8000/api/users/signUpSocial', {
             firstName: newUser.firstName,
             lastName: newUser.lastName,
             email: newUser.email,
@@ -1403,7 +1403,7 @@ class AccountService {
         }, this.httpHeaders);
     }
     signIn(newUser) {
-        return this.http.post('https://calm-lake-26690.herokuapp.com/api/users/signInSocial', {
+        return this.http.post('http://localhost:8000/api/users/signInSocial', {
             firstName: newUser.firstName,
             lastName: newUser.lastName,
             email: newUser.email,
@@ -1415,7 +1415,7 @@ class AccountService {
         }, this.httpHeaders);
     }
     login(user) {
-        return this.http.post('https://calm-lake-26690.herokuapp.com/api/users/login', {
+        return this.http.post('http://localhost:8000/api/users/login', {
             email: user.email,
             password: user.password,
             idToken: user.idToken,
@@ -1424,25 +1424,25 @@ class AccountService {
     }
     forgetPassword(data) {
         // const email = this.myauthService.getemail()
-        return this.http.post('https://calm-lake-26690.herokuapp.com/api/users/forgetPassword/', {
+        return this.http.post('http://localhost:8000/api/users/forgetPassword/', {
             email: data.email
         }, this.httpHeaders);
     }
     resetPassword(newPass) {
-        return this.http.post('https://calm-lake-26690.herokuapp.com/api/users/resetPassword/', {
+        return this.http.post('http://localhost:8000/api/users/resetPassword/', {
             confirmPassword: newPass.confirmPassword,
             password: newPass.newPassword,
             resetToken: newPass.resetToken
         }, this.httpHeaders);
     }
     accountVerify(data) {
-        return this.http.post('https://calm-lake-26690.herokuapp.com/api/users/accountVerify/', {
+        return this.http.post('http://localhost:8000/api/users/accountVerify/', {
             token: data.accountToken,
             isVerify: data.isVerify,
         }, this.httpHeaders);
     }
     editInfo(data) {
-        return this.http.post('https://calm-lake-26690.herokuapp.com/api/users/editInfo/', {
+        return this.http.post('http://localhost:8000/api/users/editInfo/', {
             userId: this.myauthService.getID(),
             username: data.username,
             email: data.email,
@@ -1450,7 +1450,7 @@ class AccountService {
         }, this.httpHeaders);
     }
     editPassword(data) {
-        return this.http.post('https://calm-lake-26690.herokuapp.com/api/users/editPassword/', {
+        return this.http.post('http://localhost:8000/api/users/editPassword/', {
             userId: this.myauthService.getID(),
             oldPassword: data.oldPassword,
             newPassword: data.newPassword,
@@ -2194,28 +2194,28 @@ class ProductService {
         this.searchItems.next(value);
     }
     getProducts() {
-        return this.http.get('https://calm-lake-26690.herokuapp.com/api/products', this.httpHeaders);
+        return this.http.get('http://localhost:8000/api/products', this.httpHeaders);
     }
     getOrders() {
-        return this.http.get('https://calm-lake-26690.herokuapp.com/api/orders/' + this.myauthService.getID(), this.httpHeaders);
+        return this.http.get('http://localhost:8000/api/orders/' + this.myauthService.getID(), this.httpHeaders);
     }
     featuredProducts() {
-        return this.http.get('https://calm-lake-26690.herokuapp.com/api/products/featuredProducts', this.httpHeaders);
+        return this.http.get('http://localhost:8000/api/products/featuredProducts', this.httpHeaders);
     }
     getCatagoryProducts(catagory) {
-        return this.http.get('https://calm-lake-26690.herokuapp.com/api/products/catagory/' + catagory, this.httpHeaders);
+        return this.http.get('http://localhost:8000/api/products/catagory/' + catagory, this.httpHeaders);
     }
     productImageUrl(name) {
-        return 'https://calm-lake-26690.herokuapp.com/api/products/image/' + name;
+        return 'http://localhost:8000/api/products/image/' + name;
     }
     getOrsers(id) {
-        return this.http.get('https://calm-lake-26690.herokuapp.com/api/orders/' + id, this.httpHeaders);
+        return this.http.get('http://localhost:8000/api/orders/' + id, this.httpHeaders);
     }
     cancelOrder(id) {
-        return this.http.post('https://calm-lake-26690.herokuapp.com/api/orders/cancelOrder/' + id, this.httpHeaders);
+        return this.http.post('http://localhost:8000/api/orders/cancelOrder/' + id, this.httpHeaders);
     }
     referFriend(data) {
-        return this.http.post('https://calm-lake-26690.herokuapp.com/api/users/referFriend', {
+        return this.http.post('http://localhost:8000/api/users/referFriend', {
             userId: this.myauthService.getID(),
             refrenceCode: data.refrenceCode,
             friendEmail: data.friendEmail
@@ -2798,7 +2798,7 @@ function MainPageComponent_div_1_ng_image_slider_17_Template(rf, ctx) { if (rf &
     const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("imagePopup", false)("imageSize", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](3, _c0))("images", ctx_r5.categories);
 } }
-const _c1 = function () { return { width: "220px", height: "30%", space: 8 }; };
+const _c1 = function () { return { width: "220px", height: "18%", space: 14 }; };
 function MainPageComponent_div_1_ng_image_slider_19_Template(rf, ctx) { if (rf & 1) {
     const _r25 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "ng-image-slider", 52, 53);
@@ -10468,23 +10468,23 @@ class AdminService {
         this.phase = "delivery phase";
     }
     addProducts(fd) {
-        return this.http.post('https://calm-lake-26690.herokuapp.com/api/products/', fd);
+        return this.http.post('http://localhost:8000/api/products/', fd);
     }
     shippingPhase(shippingPhase) {
-        return this.http.post('https://calm-lake-26690.herokuapp.com/api/orders/shipping', {
+        return this.http.post('http://localhost:8000/api/orders/shipping', {
             phase: shippingPhase.phase,
             ownerEmail: shippingPhase.ownerEmail,
             orderId: shippingPhase.orderId
         }, this.httpHeaders);
     }
     getAllOrders() {
-        return this.http.get('https://calm-lake-26690.herokuapp.com/api/orders/', this.httpHeaders);
+        return this.http.get('http://localhost:8000/api/orders/', this.httpHeaders);
     }
     updateBonus() {
-        return this.http.post('https://calm-lake-26690.herokuapp.com/api/users/updateBonus/' + this.authService.getID(), this.httpHeaders);
+        return this.http.post('http://localhost:8000/api/users/updateBonus/' + this.authService.getID(), this.httpHeaders);
     }
     giveBonus() {
-        return this.http.post('https://calm-lake-26690.herokuapp.com/api/users/updateBonus/' + this.authService.getID(), this.httpHeaders);
+        return this.http.post('http://localhost:8000/api/users/updateBonus/' + this.authService.getID(), this.httpHeaders);
     }
     getPhase() {
         return this.phase;
@@ -10493,16 +10493,16 @@ class AdminService {
     //   return this.http.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyAYJvPnMzFkvkeka7kw_aV4Pjn3TeeACv8`);
     // }
     getlocation(latitude, longitude) {
-        return this.http.post('https://calm-lake-26690.herokuapp.com/api/location', {
+        return this.http.post('http://localhost:8000/api/location', {
             latitude: latitude,
             longitude: longitude
         }, this.httpHeaders);
     }
     edit(data) {
-        return this.http.post('https://calm-lake-26690.herokuapp.com/api/products/editProduct', data);
+        return this.http.post('http://localhost:8000/api/products/editProduct', data);
     }
     deleteProduct(id) {
-        return this.http.post('https://calm-lake-26690.herokuapp.com/api/products/delete', {
+        return this.http.post('http://localhost:8000/api/products/delete', {
             id: id
         }, this.httpHeaders);
     }
@@ -11299,7 +11299,7 @@ class MainPageListItemComponent {
     removeProduct(item, productRef) {
         if (productRef) {
             let x = parseInt(productRef.innerText);
-            if (x >= 0) {
+            if (x > 0) {
                 productRef.innerText = x - 1;
                 this.cartService.removeProduct(item);
             }
