@@ -5,14 +5,14 @@ const EmailForgetPassword = async (reviever,restToken,message) =>{
 const transporter =  nodeMailer.createTransport({
     service: "gmail",
     auth:{
-        user: 'tayyabjamil777@gmail.com',
+        user: 'shrivasafoods@gmail.com',
         pass:process.env.EMAIL_PASSWORD
     }
 });
     const mailOption = {
         from:'',
         to:reviever, 
-        html:'<p>Click <a href="http://localhost:4200/resetPassword/' + restToken + '">here</a> to reset your password</p>',
+        html:'<p>Click <a href="https://calm-lake-26690.herokuapp.com/resetPassword/' + restToken + '">here</a> to reset your password</p>',
         subject:restToken,  
         text:message
     }

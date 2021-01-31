@@ -6,14 +6,14 @@ const EmailAccountConfirm = async (token,reciever) =>{
     const transporter =  nodeMailer.createTransport({
         service: "gmail",
         auth:{
-            user: 'tayyabjamil777@gmail.com',
+            user: 'shrivasafoods@gmail.com',
             pass:process.env.EMAIL_PASSWORD
         }
     });
         const mailOption = {
-            from:'tayyabjamil777@gmail.com',
+            from:'shrivasafoods@gmail.com',
             to:reciever, 
-            html:'<p>Click <a href="http://localhost:4200/accountVerify/' + token + '">here</a> to confirm account </p>',
+            html:'<p>Click <a href="https://calm-lake-26690.herokuapp.com/accountVerify/' + token + '">here</a> to confirm account </p>',
            
         }
         await transporter.sendMail(mailOption,(req,res,error)=>{
