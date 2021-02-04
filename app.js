@@ -38,7 +38,7 @@ app.use((req,res,next)=>{
     console.log("middle ware calling")
     next();  
 })
-// app.use(mongoSanitize());
+// app.\use(mongoSanitize());
 // app.use(xss());
 //  const limiter = rateLimit({
 //     max:100,
