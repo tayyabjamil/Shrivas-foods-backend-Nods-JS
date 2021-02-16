@@ -26,7 +26,7 @@ exports.forgetPassword = async (req,res,next)=>{
 if(!user){
   return res.status(404).json({
         status: 'invalid',
-        message: "Email NOt found "
+        message: "Email NOt found"
     })
 }
 const restToken = user.createPaswordRestToken();

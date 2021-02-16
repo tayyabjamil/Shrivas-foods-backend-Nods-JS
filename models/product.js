@@ -1,6 +1,10 @@
 const mongoose = require("mongoose")
  var productSchema = mongoose.Schema({
   
+    productNo:{
+      type: Number,
+      
+    }  , 
     name:{
        type: String,
        required:[true,'must add product name']

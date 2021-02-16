@@ -26,6 +26,7 @@ exports.postProducts =   async (req,res)=>{
     try {
         const newProduct = await new Product({
             _id: new mongoose.Types.ObjectId(),
+
             name: req.body.name,
             price: req.body.price,
             detail: req.body.detail,
@@ -33,7 +34,6 @@ exports.postProducts =   async (req,res)=>{
             productCount:0,
             unitTotal:req.body.price,
             productOrders:req.body.productOrders,
-           
             productImage: req.file.filename,
         })
          newProduct.save();

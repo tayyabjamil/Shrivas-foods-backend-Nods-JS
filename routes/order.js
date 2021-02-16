@@ -15,7 +15,7 @@ router.route('/shipping')
 .post(orderController.nextPhase)
 
 
-router.route('/cancelOrder/:id')
+router.route('/cancelOrder')
 .post(orderController.cancelOrder)
 
 router.route('/filter')
