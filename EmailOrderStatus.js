@@ -5,12 +5,12 @@ require('dotenv').config()
         const transporter =  nodeMailer.createTransport({
             service: "gmail",
             auth:{
-                user: 'tayyabjamil777@gmail.com',
+                user: 'shrivasafoods@gmail.com',
                 pass:process.env.EMAIL_PASSWORD
             }
         });
             const mailOption = {
-                from:'tayyabjamil777@gmail.com',
+                from:'shrivasafoods@gmail.com',
                 to:reviever, 
                
                 text:message

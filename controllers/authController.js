@@ -39,7 +39,7 @@ if(user.provider == 'GOOGLE' || user.provider == 'FACEBOOK'){
 }
 const restToken = user.createPaswordRestToken();
 await user.save({validateBeforeSave:false});
-// const resetUrl = `http://localhost:4200/resetPassword${restToken}`
+// const resetUrl = `https://calm-lake-26690.herokuapp.com/resetPassword${restToken}`
 const message = `forget password reset password at url ${restToken}`
 try {
     EmailForgetPassword(

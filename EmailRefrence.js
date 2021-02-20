@@ -6,15 +6,15 @@ require('dotenv').config()
             const transporter =  nodeMailer.createTransport({
                 service: "gmail",
                 auth:{
-                    user: 'tayyabjamil777@gmail.com',
+                    user: 'shrivasafoods@gmail.com',
                     pass:process.env.EMAIL_PASSWORD
                 }
             });
                 const mailOption = {
-                    from:'tayyabjamil777@gmail.com',
+                    from:'shrivasafoods@gmail.com',
                     to:email, 
-                    html: '<p>Get discount by using this '+ code +' code in your next order to give  <a href="http://localhost:4200/discount/' + username + '">10% Discount</a></p>',
-                    // html:'<p>Click <a href="http://localhost:4200/accountVerify/' + token + '">here</a> to confirm account </p>',
+                    html: '<p>Get discount by using this '+ code +' code in your next order to give  <a href="https://calm-lake-26690.herokuapp.com/discount/' + username + '">10% Discount</a></p>',
+                    // html:'<p>Click <a href="https://calm-lake-26690.herokuapp.com/accountVerify/' + token + '">here</a> to confirm account </p>',
        
                     text:username
                 }

@@ -110,7 +110,7 @@ exports.verifyAndAccount = async (req, res) => {
     const user = await User.find({ verifyAccountToken: req.body.token });
     if (user) {
       user[0].verifyAccountToken = undefined;
-      user[0].verification = "verified";
+      user[0].verification = "x";
       user[0].save({ validateBeforeSave: false });
     }
 

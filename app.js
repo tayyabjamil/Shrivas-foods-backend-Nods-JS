@@ -28,6 +28,19 @@ app.use('/', express.static(path.join('public/uploads/')))
  app.use('*',(req,res)=>{
    res.sendFile(path.join(__dirname,'public'))
  })
+ app.use('/login',(req,res)=>{
+   res.sendFile(path.join(__dirname,'public/index.html'))
+ })
+ app.use('/cart',(req,res)=>{
+   res.sendFile(path.join(__dirname,'public/index.html'))
+ })
+  app.use('/checkOut',(req,res)=>{
+   res.sendFile(path.join(__dirname,'public/index.html'))
+  })
+  app.use('/cart',(req,res)=>{
+   res.sendFile(path.join(__dirname,'public/index.html'))
+ })
+
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
@@ -36,7 +49,7 @@ app.use((req,res,next)=>{
     console.log("middle ware calling")
     next();  
 })
-// app.use(mongoSanitize());
+// app.\use(mongoSanitize());
 // app.use(xss());
 //  const limiter = rateLimit({
 //     max:100,
