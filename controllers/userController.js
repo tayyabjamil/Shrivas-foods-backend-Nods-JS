@@ -59,6 +59,8 @@ exports.login = async (req, res) => {
       }
       console.log(user[0].password);
       username = user[0].firstName;
+      firstName=user[0].firstName;
+      lastName=user[0].lastName
       email = user[0].email;
       phone = user[0].phone;
       userId = user[0]._id;
@@ -83,6 +85,8 @@ exports.login = async (req, res) => {
               phone,
               username,
               userId,
+              firstName,
+              lastName,
               refrenceId,
               email,
               role,

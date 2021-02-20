@@ -29,6 +29,14 @@ if(!user){
         message: "Email NOt found"
     })
 }
+if(user.provider){
+if(user.provider == 'GOOGLE' || user.provider == 'FACEBOOK'){
+    return res.status(404).json({
+        status: 'invalid',
+        message: "Social Account Error"
+    })
+}
+}
 const restToken = user.createPaswordRestToken();
 await user.save({validateBeforeSave:false});
 // const resetUrl = `http://localhost:4200/resetPassword${restToken}`
@@ -69,7 +77,7 @@ exports.resetPassword = async(req,res)=>{
 if(!user){
   return res.status(401).json({
         status: 'invalid',
-        message: "Token expired or wrong authtication"
+        message: "Please reset Password again as token expired for sequrity reasons"
     })
 }else{
   if(req.body.password === req.body.confirmPassword){

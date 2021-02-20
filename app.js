@@ -16,6 +16,7 @@ const userRouter = require('./routes/user')
 const orderRouter = require('./routes/order')
 const locationRouter = require('./routes/location')
 const shippingRouter = require('./routes/shipping')
+const paymentRouter = require('./routes/payment')
 var path = require("path");
 
 // app.use(compression())
@@ -47,5 +48,6 @@ app.use('/api/users',userRouter)
 app.use('/api/products',productRouter)
 app.use('/api/orders', orderRouter)
 app.use('/api/location', locationRouter)
+app.use('/api/payment', paymentRouter)
 app.use('/api/shipping',shippingRouter)
 module.exports = app;
