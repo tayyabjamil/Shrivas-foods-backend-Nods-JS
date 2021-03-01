@@ -21,20 +21,24 @@ conn.once('open', () => {
   });
 console.log(gfs)
 exports.postProducts =   async (req,res)=>{
-
+// console.log(req.files)
     
     try {
         const newProduct = await new Product({
             _id: new mongoose.Types.ObjectId(),
 
             name: req.body.name,
+            grams: req.body.grams,
+            ingredients: req.body.ingredients,
+            sweet_spice: req.body.sweet_spice,       
             price: req.body.price,
             detail: req.body.detail,
             catagory: req.body.catagory,
             productCount:0,
             unitTotal:req.body.price,
-            productOrders:req.body.productOrders,
-            productImage: req.file.filename,
+            productOrders:0,
+            productImage: req.files.productImage,
+            multipleImages:req.files.multipleImages
         })
          newProduct.save();
        res.status(201).json({
@@ -83,7 +87,7 @@ exports.postProducts =   async (req,res)=>{
         }
         
     }
-    exports.deleteProduct = async(req,res)=>{
+    exports.deleteProduct = async(req,res)=>{   
         try {
 
             const product = await Product.findOne({ _id: req.body.id })
@@ -182,7 +186,7 @@ exports.postProducts =   async (req,res)=>{
     exports.featuredProducts = async(req,res)=>{
         try {
     const featuredProducts = await Product.find().sort( { productOrders : 1 } )
-        .limit(8).select('-__v')    
+        .limit(12).select('-__v')    
     res.status(201).send(featuredProducts) 
         } catch (error) {
             res.status(404).json({

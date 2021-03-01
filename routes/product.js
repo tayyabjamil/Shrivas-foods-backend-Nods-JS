@@ -20,13 +20,13 @@ const router = express.Router();
 
 const storage = new GridFsStorage({
   url: dbpath,
-  file: (req, file) => {
+  file: (req, files) => {
     return new Promise((resolve, reject) => {
       crypto.randomBytes(16, (err, buf) => {
         if (err) {
           return reject(err);
         }
-        const filename = buf.toString("hex") + path.extname(file.originalname);
+        const filename = buf.toString("hex") + path.extname(files.originalname);
         const fileInfo = {
           filename: filename,
           bucketName: "uploads",
@@ -42,7 +42,7 @@ let gfs;
 router
   .route("/")
   .get(productController.getProducts)
-  .post(upload.single("productImage"), productController.postProducts)
+  .post(upload.fields([{name:'productImage', maxCount:1},{name:'multipleImages',maxCount:4}]), productController.postProducts)
   .delete(productController.deleteProduct);
 
 router.route("/delete").post(productController.deleteProduct);

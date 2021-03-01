@@ -5,6 +5,7 @@ const mongoose = require("mongoose")
       type: Number,
       
     }  , 
+
     name:{
        type: String,
        required:[true,'must add product name']
@@ -13,6 +14,14 @@ const mongoose = require("mongoose")
         type: String,
         required:[true,'must add product catagory']
      },
+     grams:{
+      type: String,
+      required:[true,'must add product catagory']
+   },
+   sweet_spice:{
+      type: String,
+      required:[true,'must add product catagory']
+   },
      price:{
         type: Number,
         required:[true,'must add product price']
@@ -21,11 +30,13 @@ const mongoose = require("mongoose")
         type: String,
         required:[true,'must add product detail']
      },
+     ingredients:[],
      productCount:Number,
      unitTotal:Number,
-     productImage: String,
-     productOrders:Number
-    
+     productImage: [],
+     multipleImages:[],
+     productOrders:Number,
+     customiztion:[]
     })
 
     module.exports = mongoose.model('product',productSchema);
