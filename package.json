@@ -6,7 +6,7 @@
   "scripts": {
     "serve": "nodemon server.js"
   },
-    "author": "",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "@angular/material": "^9.2.4",
