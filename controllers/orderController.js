@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const Product = require("../models/product");
 const EmailOrderStatus = require("../EmailOrderStatus");
 const EmailCancelOrder = require("../EmailCancelOrder");
+const EmailOrderStart = require("../EmailOrderStart");
 exports.getAllOrders = async (req, res) => {
     try {
         const orders = await Order.find();
@@ -56,6 +57,7 @@ exports.filterOrders = async (req, res) => {
 exports.createOrder = async (req, res) => {
     try {
         const order = await Order.create(req.body);
+        EmailOrderStart(req.body.ownerEmail)
         res.status(201).json({
             status: "success",
             product: order,

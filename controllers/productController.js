@@ -183,6 +183,19 @@ exports.postProducts =   async (req,res)=>{
             }
         });
     };
+    exports.trendingProducts = async(req,res)=>{
+        try {
+    const trendingProducts = await Product.find()
+        .limit(12).select('-__v')    
+    res.status(201).send(trendingProducts) 
+        } catch (error) {
+            res.status(404).json({
+                status:' No product found',
+                message:error
+            })
+        }
+        
+    }
     exports.featuredProducts = async(req,res)=>{
         try {
     const featuredProducts = await Product.find().sort( { productOrders : 1 } )
@@ -196,5 +209,4 @@ exports.postProducts =   async (req,res)=>{
         }
         
     }
-
     

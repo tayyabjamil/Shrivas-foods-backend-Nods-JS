@@ -55,6 +55,7 @@ router.route("/images").get(productController.getProductImages);
 router.route("/image/:filename").get(productController.getProductImage);
 
 router.route("/featuredProducts").get(productController.featuredProducts);
+router.route("/trendingProducts").get(productController.trendingProducts);
 
 router
   .route("/:id")
