@@ -5,6 +5,7 @@ const Product = require("../models/product");
 const EmailOrderStatus = require("../EmailOrderStatus");
 const EmailCancelOrder = require("../EmailCancelOrder");
 const EmailOrderStart = require("../EmailOrderStart");
+const EmailAdmin = require("../EmailAdmin");
 exports.getAllOrders = async (req, res) => {
     try {
         const orders = await Order.find();
@@ -127,7 +128,8 @@ exports.nextPhase = async (req, res) => {
 exports.cancelOrder = async (req, res) => {
     try {
         const order = await Order.find({ _id: req.body.id });
-    if(order[0].phase !=="processing"){
+       
+        if(order[0].phase !=="processing"){
         res.status(404).json({
             
             message: 'You can not cancel the order now',
@@ -143,7 +145,7 @@ exports.cancelOrder = async (req, res) => {
                     console.log(err);
                 } else if (result) {
                     EmailCancelOrder(req.body.ownerEmail);
-
+                    EmailAdmin(req.body.username);
                     console.log(result);
                 }
             }

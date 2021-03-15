@@ -32,6 +32,7 @@ exports.postProducts =   async (req,res)=>{
             ingredients: req.body.ingredients,
             sweet_spice: req.body.sweet_spice,       
             price: req.body.price,
+            featured: req.body.featured,
             detail: req.body.detail,
             catagory: req.body.catagory,
             productCount:0,
@@ -57,7 +58,7 @@ exports.postProducts =   async (req,res)=>{
 
     exports.getProducts = async(req,res)=>{
         try {
-    const products = await Product.find()
+    const products = await Product.find({featured:'No'})
     //     .populate({
     //         path:'reviews',
            
@@ -164,7 +165,7 @@ exports.postProducts =   async (req,res)=>{
             }
     
             // Check if image
-            if (file.contentType === 'image/jpeg' || file.contentType === 'image/png') {
+            // if (file.contentType === 'image/jpeg' || file.contentType === 'image/png') {
                 // Read output to browser
                 res.set('Content-Type', file.contentType);
                 res.set('Content-Disposition', 'attachment; filename="' + file.filename + '"');
@@ -178,15 +179,16 @@ exports.postProducts =   async (req,res)=>{
     
                 readstream.pipe(res);
                 res.status(200)
-            } else {
-                res.status(404).json({ err: 'Not an image' });
-            }
+            // } else {
+                // res.status(404).json({ err: 'Not an image' });
+            // }
         });
     };
     exports.trendingProducts = async(req,res)=>{
         try {
-    const trendingProducts = await Product.find()
+    const trendingProducts = await Product.find({featured:'No'}).sort( { productOrders : 1 } )
         .limit(12).select('-__v')    
+    
     res.status(201).send(trendingProducts) 
         } catch (error) {
             res.status(404).json({
@@ -198,7 +200,7 @@ exports.postProducts =   async (req,res)=>{
     }
     exports.featuredProducts = async(req,res)=>{
         try {
-    const featuredProducts = await Product.find().sort( { productOrders : 1 } )
+    const featuredProducts = await Product.find({ featured : 'Yes' } )
         .limit(12).select('-__v')    
     res.status(201).send(featuredProducts) 
         } catch (error) {

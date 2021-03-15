@@ -10,6 +10,10 @@ const mongoose = require("mongoose")
        type: String,
        required:[true,'must add product name']
     },
+    featured:{
+      type: String,
+      required:[true,'must add featured or not']
+   },
     catagory:{
         type: String,
         required:[true,'must add product catagory']

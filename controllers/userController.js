@@ -44,14 +44,25 @@ exports.signUp = async (req, res) => {
 };
 exports.login = async (req, res) => {
   try {
+    
     const user = await User.find({
       $or: [{ email: req.body.email }, { phone: req.body.email }],
     });
+    
     if (user.length == 0) {
       return res.status(404).json({
         message: "No Account Create Account First",
       });
     } else {
+      if(req.body.provider == 'GOOGLE' || req.body.provider == 'FACEBOOK' ){
+        if(user[0].provider !== 'GOOGLE' || user[0].provider !== 'GOOGLE'){
+          return res.status(404).json({
+            message: "Manual Account Error",
+          });
+                 
+        } 
+        }
+       
       if (user[0].verification === "not verified") {
         return res.status(404).json({
           message: "Account not verified",
